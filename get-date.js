@@ -2,7 +2,7 @@ const yargs = require("yargs/yargs");
 const { hideBin } = require("yargs/helpers");
 
 const args = process.argv.slice(2, 4).join("");
-const addSub = process.argv.slice(-1).join("");
+const addAndSub = process.argv.slice(-1).join("");
 
 const argv = yargs(hideBin(process.argv))
   .option("params_1", {
@@ -33,13 +33,13 @@ const argv = yargs(hideBin(process.argv))
     alias: "sub",
     type: "number",
     description: "sub",
-    default: /[0-9]/.test(addSub) && new Date().getMonth() + 1 - +addSub,
+    default: /[0-9]/.test(addAndSub) && new Date().getMonth() + 1 - +addAndSub,
   })
   .option("params_6", {
     alias: "add",
     type: "number",
     description: "add",
-    default: /[0-9]/.test(addSub) && new Date().getDate() + +addSub,
+    default: /[0-9]/.test(addAndSub) && new Date().getDate() + +addAndSub,
   }).argv;
 
 switch (args) {
