@@ -22,7 +22,7 @@
     "yargs-parser": "^21.1.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node -r dotenv/config config.js"
   },
   "repository": {
     "type": "git",
@@ -33,5 +33,8 @@
   "bugs": {
     "url": "https://github.com/BekhruzValizhonov/node-js-netology/issues"
   },
-  "homepage": "https://github.com/BekhruzValizhonov/node-js-netology#readme"
+  "homepage": "https://github.com/BekhruzValizhonov/node-js-netology#readme",
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
 }
