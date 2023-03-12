@@ -1,20 +1,32 @@
-function game(gamer) {
-  const randmNum = Math.floor(Math.random() * 100);
+const readline = require("readline");
 
-  if (+gamer === randmNum) {
-    console.log(`Отгадано число ${gamer}`);
-    return;
-  }
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-  if (+gamer > randmNum) {
-    console.log("Больше");
-    game();
-  }
+function game(question) {
+  try {
+    const randmNum = Math.floor(Math.random() * 100);
+    rl.question(question, (answer) => {
+      if (+answer === randmNum) {
+        rl.write(`Отгадано число :  ${answer}\n`);
+        return;
+      }
 
-  if (+gamer < randmNum) {
-    console.log("Меньше");
-    game();
+      if (+answer > randmNum) {
+        rl.write(`Больше:  ${answer}\n`);
+        game(question);
+      }
+
+      if (+answer < randmNum) {
+        rl.write(`Меньше:  ${answer}\n`);
+        game(question);
+      }
+    });
+  } catch (error) {
+    console.log(error);
   }
 }
 
-game(process.argv.slice(2).join(""));
+game("Отгадай число:");
