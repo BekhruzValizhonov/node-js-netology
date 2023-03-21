@@ -13,6 +13,10 @@ app.post("/api/user/login", (req, res) => {
   try {
     const { email } = req.body;
     const condidate = new User(email);
+    const user = users.find((user) => user.email === condidate.email);
+    if (user) {
+      return res.status(404).json({ message: "Error" });
+    }
     users.push(condidate);
     res.status(201).json(condidate);
   } catch (error) {
